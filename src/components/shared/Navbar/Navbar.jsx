@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className=" bg-base-100 shadow-sm">
       <div className="container mx-auto navbar">
 
-        <div className="flex-1">
+        <div className=" hidden md:flex flex-1">
           <img src={navLogo} alt="" />
         </div>
         <div className="flex-none">
