@@ -25,8 +25,13 @@ KeenKeeper is a friendship management app that helps you stay connected with the
 ---
 
 ## 📸 Screenshots
+#home-page
+> <img width="3482" height="3658" alt="keen-keeper-nine vercel app_" src="https://github.com/user-attachments/assets/42eff26e-017c-41cb-a38e-717e90d2714b" />
+#timeline-page
+> <img width="1774" height="726" alt="Screenshot from 2026-04-14 21-47-03" src="https://github.com/user-attachments/assets/ed40d759-3225-4ff8-bdc5-da8289fa6814" />
+#stats-with-graph
+> <img width="1755" height="888" alt="Screenshot from 2026-04-14 21-47-37" src="https://github.com/user-attachments/assets/3d73f331-7ddf-46aa-b434-ec16773cb926" />
 
-> _Add screenshots of your app here_
 
 ---
 
