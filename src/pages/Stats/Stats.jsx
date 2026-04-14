@@ -21,7 +21,7 @@ const Stats = () => {
       <h1 className='font-bold text-5xl mt-5'>Friendship Analytics</h1>
 
       {
-        call.length === 0 && <div className="text-center mt-30">
+        call.length === 0 && <div className="text-center mt-30 min-h-[50vh]">
           <h1 className='text-3xl'>No data available</h1>
         </div>
       }
