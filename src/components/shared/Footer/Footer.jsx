@@ -45,7 +45,7 @@ const Footer = () => {
                     </div>
                 </nav>
 
-                <div className="flex justify-between w-full border-t border-gray-500 pt-4 text-gray-300">
+                <div className="flex flex-col md:flex-row justify-between w-full border-t border-gray-500 pt-4 text-gray-300">
                     <p>Copyright © {new Date().getFullYear()} - © 2026 KeenKeeper. All rights reserved.</p>
                 <ul className='flex gap-3.5'>
                     <li><a href="">Privacy Policy </a></li>
