@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import callImg from '../../assets/call.png'
 import messageImg from '../../assets/meg.png'
 import videoPng from '../../assets/video.png'
 import { FriendsContext } from '../../context/FriendsProvider';
 import { LuPackageOpen } from 'react-icons/lu';
+import { CiFilter } from 'react-icons/ci';
 const TimeLine = () => {
     const { call, setCall } = useContext(FriendsContext);
-
+    const [callsData,setCallsData]=useState(call);
 
     const handleSorted = (value) => {
         if (value === 'oldToNew') {
@@ -14,27 +15,63 @@ const TimeLine = () => {
             const sorted = [...call].sort((a, b) => new Date(a.atCreated) - new Date(b.atCreated));
             setCall(sorted)
         }
-        else if(value === 'newToOld'){
+        else if (value === 'newToOld') {
             const sorted = [...call].sort((a, b) => new Date(b.atCreated) - new Date(a.atCreated));
             setCall(sorted)
         }
     }
 
+    const handleFilterInteractions = (value) => {
+        if (value === 'call') {
+            setCall([...call])
+            const filterByCalls = [...call].filter(c => c.type === "Call");
+            setCallsData(filterByCalls);
+
+        }
+        else if (value === 'text') {
+            setCall([...call])
+            const filterByText = [...call].filter(c => c.type === "Text");
+            setCallsData(filterByText)
+
+        }
+        else if (value === 'video') {
+            setCall(call)
+            const filterByCalls = [...call].filter(c => c.type === "Video");
+            setCallsData(filterByCalls);
+
+        }
+
+    }
 
     return (
         <div className='container mx-auto mt-10 px-4 md:px-0'>
             <h1 className='text-5xl font-bold'>Timeline </h1>
-            <details className="dropdown mt-4">
-                <summary className="btn m-1">Filter timeline</summary>
-                <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                    <li onClick={() => handleSorted('oldToNew')}><a>Oldest to Newest</a></li>
-                    <li onClick={()=>handleSorted('newToOld')}><a>Newest To Oldest</a></li>
-                </ul>
-            </details>
+            <div className="">
+                {/* filter */}
+                <details className="dropdown mt-4">
+                    <summary className="btn m-1"><CiFilter /> Filter timeline</summary>
+                    <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                        <li onClick={() => handleFilterInteractions('call')}><a>Calls</a></li>
+                        <li onClick={() => handleFilterInteractions('text')}><a>Text</a></li>
+                        <li onClick={() => handleFilterInteractions('video')}><a>Videos</a></li>
+                    </ul>
+                </details>
+
+                {/* sort */}
+                <details className="dropdown mt-4">
+                    <summary className="btn m-1">Sort Interactions</summary>
+                    <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                        <li onClick={() => handleSorted('oldToNew')}><a>Oldest to Newest</a></li>
+                        <li onClick={() => handleSorted('newToOld')}><a>Newest To Oldest</a></li>
+                    </ul>
+                </details>
+
+
+            </div>
             {
                 call.length >= 1 ? <div>
                     {
-                        call.map(callNotification => {
+                        callsData.map(callNotification => {
                             return <div className="w-full px-5 py-2 border border-gray-300 shadow rounded-2xl flex items-center gap-5 mt-4">
                                 {
                                     callNotification.type === "Call" && <div>
